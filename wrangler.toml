@@ -1,0 +1,22 @@
+name = "ratlamitadka-ai-agent"
+main = "apps/worker/src/index.ts"
+compatibility_date = "2026-10-11"
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ratlamitadka-agent-db"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "apps/worker/migrations"
+
+[triggers]
+# 12:30 UTC = 18:00 Asia/Kolkata
+crons = ["30 12 * * *"]
+
+[vars]
+APP_TIMEZONE = "Asia/Kolkata"
+PAYMENT_PENDING_MINUTES = "120"
+DISPATCH_DELAY_HOURS = "24"
+DEMO_MODE = "true"
